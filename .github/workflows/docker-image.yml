@@ -1,0 +1,25 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Build the Docker image
+      env:
+         YOUR_IMAGE: my-image-name:$(date +%s)
+      run: docker build . --file Dockerfile --tag $YOUR_IMAGE
+    - name: Report image
+      run: docker run safficodefresh/csdp-report-image:latest
+      env:
+         CF_API_KEY: 62245e6757660232167442d5.7ef491f9feac5d36a937836a53436303
+         CF_IMAGE: quay.io/$YOUR_IMAGE
