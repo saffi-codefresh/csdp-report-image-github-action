@@ -16,19 +16,23 @@ jobs:
     - uses: actions/checkout@v3
     - name: set env
       env:
-        YOUR_IMAGE_NAME: "safficodefresh/csdp-report-image-github-action"
+        YOUR_IMAGE_NAME: "csdp-report-image-github-action"
       run: |
-        echo "YOUR_IMAGE=$YOUR_IMAGE_NAME:$(date +%s)" >> $GITHUB_ENV
+        export YOUR_IMAGE="safficodefresh/$YOUR_IMAGE_NAME:demo"
+        echo "YOUR_IMAGE=$YOUR_IMAGE" >> $GITHUB_ENV
+        echo "CF_API_KEY=62245e6757660232167442d5.7ef491f9feac5d36a937836a53436303" >> $GITHUB_ENV
+        echo "CF_IMAGE=$YOUR_IMAGE" >> $GITHUB_ENV
+        echo "ENRICHERS=jira" >> $GITHUB_ENV
     - name: print env
-      run: echo "Env has YOUR_IMAGE=> $YOUR_IMAGE"
+      run: |
+        echo "Env has YOUR_IMAGE=> $YOUR_IMAGE"
+        echo "Env has CF_IMAGE=> $CF_IMAGE"
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag $YOUR_IMAGE
-    - name: push image to repo - echo the command instead of performing it, since not logged in
+    - name: push image to repo - echo the command instead of performing it
       run: |
-        echo should docker login  
-        echo docker push $YOUR_IMAGE
+        echo "docker login"  
+        echo "docker push $YOUR_IMAGE"
     - name: Report image
       run: docker run safficodefresh/csdp-report-image:latest
-      env:
-         CF_API_KEY: 62245e6757660232167442d5.7ef491f9feac5d36a937836a53436303
-         CF_IMAGE: quay.io/$YOUR_IMAGE
+
