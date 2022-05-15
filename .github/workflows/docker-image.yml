@@ -23,6 +23,7 @@ jobs:
         echo "CF_API_KEY=62245e6757660232167442d5.7ef491f9feac5d36a937836a53436303" >> $GITHUB_ENV
         echo "CF_IMAGE=$YOUR_IMAGE" >> $GITHUB_ENV
         echo "ENRICHERS=jira" >> $GITHUB_ENV
+        echo "VERBOSE=1" >> $GITHUB_ENV
     - name: print env
       run: |
         echo "Env has YOUR_IMAGE=> $YOUR_IMAGE"
