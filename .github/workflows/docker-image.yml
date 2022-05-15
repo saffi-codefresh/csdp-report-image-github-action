@@ -20,10 +20,6 @@ jobs:
       run: |
         export YOUR_IMAGE="safficodefresh/$YOUR_IMAGE_NAME:demo"
         echo "YOUR_IMAGE=$YOUR_IMAGE" >> $GITHUB_ENV
-        echo "CF_API_KEY=62245e6757660232167442d5.7ef491f9feac5d36a937836a53436303" >> $GITHUB_ENV
-        echo "CF_IMAGE=$YOUR_IMAGE" >> $GITHUB_ENV
-        echo "ENRICHERS=jira" >> $GITHUB_ENV
-        echo "VERBOSE=1" >> $GITHUB_ENV
     - name: print env
       run: |
         echo "Env has YOUR_IMAGE=> $YOUR_IMAGE"
@@ -35,5 +31,10 @@ jobs:
         echo "docker login"  
         echo "docker push $YOUR_IMAGE"
     - name: Report image
+      env:
+        VERBOSE: "1"
+        CF_API_KEY: "62245e6757660232167442d5.7ef491f9feac5d36a937836a53436303"
+        CF_IMAGE: "$YOUR_IMAGE"
+        ENRICHERS: "jira"
       run: docker run safficodefresh/csdp-report-image:latest
 
