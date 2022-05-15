@@ -16,10 +16,10 @@ jobs:
     - uses: actions/checkout@v3
     - name: set env
       env:
-         YOUR_IMAGE: my-image-name:$(date +%s)
-      run: echo $YOUR_IMAGE
+         YOUR_IMAGE: "my-image-name:$(date +%s)"
+      run: echo "value is $YOUR_IMAGE"
     - name: print env
-      run: echo $YOUR_IMAGE
+      run: echo "Env has YOUR_IMAGE $YOUR_IMAGE"
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag $YOUR_IMAGE
     - name: Report image
