@@ -15,7 +15,8 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: set env
-         YOUR_IMAGE_NAME: "my-image-name"
+      env:
+        YOUR_IMAGE_NAME: "my-image-name"
       run: |
         echo "{YOUR_IMAGE}={$YOUR_IMAGE_NAME:$(date +%s)}" >> $GITHUB_ENV
     - name: print env
