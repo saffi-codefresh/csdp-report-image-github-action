@@ -25,8 +25,8 @@ jobs:
       run: docker build . --file Dockerfile --tag $YOUR_IMAGE
     - name: push image to repo - echo the command instead of performing it, since not logged in
       run: |
-        docker login -u safficodefresh -p 0ad9aeb7-44e1-4e95-b452-084a0bd71c2d 
-        docker push $YOUR_IMAGE
+        echo should docker login  
+        echo docker push $YOUR_IMAGE
     - name: Report image
       run: docker run safficodefresh/csdp-report-image:latest
       env:
