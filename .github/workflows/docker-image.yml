@@ -14,9 +14,13 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    - name: Build the Docker image
+    - name: set env
       env:
          YOUR_IMAGE: my-image-name:$(date +%s)
+      run: echo $YOUR_IMAGE
+    - name: print env
+      run: echo $YOUR_IMAGE
+    - name: Build the Docker image
       run: docker build . --file Dockerfile --tag $YOUR_IMAGE
     - name: Report image
       run: docker run safficodefresh/csdp-report-image:latest
