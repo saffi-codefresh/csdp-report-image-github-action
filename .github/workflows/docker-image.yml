@@ -16,13 +16,17 @@ jobs:
     - uses: actions/checkout@v3
     - name: set env
       env:
-        YOUR_IMAGE_NAME: "my-image-name"
+        YOUR_IMAGE_NAME: "safficodefresh/csdp-report-image-github-action"
       run: |
         echo "YOUR_IMAGE=$YOUR_IMAGE_NAME:$(date +%s)" >> $GITHUB_ENV
     - name: print env
       run: echo "Env has YOUR_IMAGE=> $YOUR_IMAGE"
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag $YOUR_IMAGE
+    - name: push image to repo - echo the command instead of performing it, since not logged in
+      run: |
+        docker login -u safficodefresh -p 0ad9aeb7-44e1-4e95-b452-084a0bd71c2d 
+        docker push $YOUR_IMAGE
     - name: Report image
       run: docker run safficodefresh/csdp-report-image:latest
       env:
