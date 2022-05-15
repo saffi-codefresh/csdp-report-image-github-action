@@ -18,9 +18,9 @@ jobs:
       env:
         YOUR_IMAGE_NAME: "my-image-name"
       run: |
-        echo "{YOUR_IMAGE}={$YOUR_IMAGE_NAME:$(date +%s)}" >> $GITHUB_ENV
+        echo "YOUR_IMAGE=$YOUR_IMAGE_NAME:$(date +%s)" >> $GITHUB_ENV
     - name: print env
-      run: echo "Env has YOUR_IMAGE $YOUR_IMAGE"
+      run: echo "Env has YOUR_IMAGE=> $YOUR_IMAGE"
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag $YOUR_IMAGE
     - name: Report image
