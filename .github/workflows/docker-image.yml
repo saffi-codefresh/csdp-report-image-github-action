@@ -37,6 +37,5 @@ jobs:
         CF_IMAGE: "$YOUR_IMAGE"
         ENRICHERS: "jira"
       run: |
-        docker pull safficodefresh/csdp-report-image:latest
-        docker run safficodefresh/csdp-report-image:latest -e VERBOSE:$VERBOSE
+        docker run safficodefresh/csdp-report-image:latest
 
