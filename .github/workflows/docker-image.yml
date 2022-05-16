@@ -37,5 +37,5 @@ jobs:
         CF_IMAGE: "$YOUR_IMAGE"
         ENRICHERS: "jira"
       run: |
-        docker run safficodefresh/csdp-report-image:latest
+        docker run -e CF_API_KEY $CF_API_KEY -e CF_IMAGE $CF_IMAGE -e ENRICHERS $ENRICHERS safficodefresh/csdp-report-image:latest
 
