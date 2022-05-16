@@ -20,7 +20,7 @@ jobs:
         YOUR_IMAGE_NAME: "csdp-report-image-github-action"
         YOUR_IMAGE: "${{ secrets.DOCKER_HUB_USERNAME }}/csdp-report-image-github-action:demo"
       run: |
-        echo "YOUR_IMAGE=${{ YOUR_IMAGE }}" >> $GITHUB_ENV
+        echo "YOUR_IMAGE=${ YOUR_IMAGE }" >> $GITHUB_ENV
     - name: print env
       run: |
         echo "Env has YOUR_IMAGE=> $YOUR_IMAGE"
@@ -35,7 +35,7 @@ jobs:
         context: .
         file: ./Dockerfile
         push: true
-        tags: ${{ YOUR_IMAGE }}
+        tags: ${ YOUR_IMAGE }
 
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag $YOUR_IMAGE
