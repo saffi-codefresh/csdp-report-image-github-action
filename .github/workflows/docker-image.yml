@@ -36,12 +36,13 @@ jobs:
         CF_API_KEY: "62245e6757660232167442d5.7ef491f9feac5d36a937836a53436303"
         CF_IMAGE: "$YOUR_IMAGE"
         ENRICHERS: "jira"
+        CF_HOST: "https://g.codefresh.io"
       run: |
         echo "VERBOSE=$VERBOSE" >> cf.env
         echo "CF_API_KEY=$CF_API_KEY" >> cf.env        
         echo "CF_IMAGE=$CF_IMAGE" >> cf.env        
         echo "ENRICHERS=$ENRICHERS" >> cf.env 
-        echo "using env" << cf.env
+        echo "using env:"
         cat cf.env
     - name: Report image
       run: |
