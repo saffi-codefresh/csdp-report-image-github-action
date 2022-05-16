@@ -31,7 +31,7 @@ jobs:
       run: |
         echo "docker login"  
         echo "docker push $YOUR_IMAGE"
-    - uses: codefresh-io/csdp-report-image
+    - uses: codefresh-io/csdp-report-image@v1
       name: report to csdo
       env:
         VERBOSE: "1"
