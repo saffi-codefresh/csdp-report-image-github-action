@@ -18,45 +18,53 @@ jobs:
     - name: set env
       env:
         YOUR_IMAGE_NAME: "csdp-report-image-github-action"
+        YOUR_IMAGE: "${{ secrets.DOCKER_HUB_USERNAME }}/csdp-report-image-github-action:demo"
       run: |
-        export YOUR_IMAGE="safficodefresh/$YOUR_IMAGE_NAME:demo"
-        echo "YOUR_IMAGE=$YOUR_IMAGE" >> $GITHUB_ENV
+        echo "YOUR_IMAGE=${{ YOUR_IMAGE }}" >> $GITHUB_ENV
     - name: print env
       run: |
         echo "Env has YOUR_IMAGE=> $YOUR_IMAGE"
-        echo "Env has CF_IMAGE=> $CF_IMAGE"
+    - name: Login to DockerHub
+      uses: docker/login-action@v2
+      with:
+        username: ${{ secrets.DOCKERHUB_USERNAME }}
+        password: ${{ secrets.DOCKERHUB_TOKEN }}
+    - name: Build and push
+      uses: docker/build-push-action@v2
+      with:
+        context: .
+        file: ./Dockerfile
+        push: true
+        tags: ${{ YOUR_IMAGE }}
+
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag $YOUR_IMAGE
-    - name: push image to repo - echo the command instead of performing it
-      run: |
-        echo "docker login"  
-        echo "docker push $YOUR_IMAGE"
-    - uses: codefresh-io/csdp-report-image@v0.1.0
-      name: report to csdo
-      env:
-        VERBOSE: "1"
-        CF_API_KEY: "62245e6757660232167442d5.7ef491f9feac5d36a937836a53436303"
-        CF_IMAGE: "$YOUR_IMAGE"
-        ENRICHERS: "jira"
-        CF_HOST: "https://g.codefresh.io"
-
-
-#
-#- name: setup cf env
+#    - uses: codefresh-io/csdp-report-image@v0.1.0
+#      name: report to csdo
 #      env:
 #        VERBOSE: "1"
 #        CF_API_KEY: "62245e6757660232167442d5.7ef491f9feac5d36a937836a53436303"
 #        CF_IMAGE: "$YOUR_IMAGE"
 #        ENRICHERS: "jira"
 #        CF_HOST: "https://g.codefresh.io"
-#      run: |
-#        echo "VERBOSE=$VERBOSE" >> cf.env
-#        echo "CF_API_KEY=$CF_API_KEY" >> cf.env
-#        echo "CF_HOST=$CF_HOST" >> cf.env
-#        echo "CF_IMAGE=$CF_IMAGE" >> cf.env
-#        echo "ENRICHERS=$ENRICHERS" >> cf.env
-#    - name: Report image
-#      run: |
-#        cat cf.env
-#        docker run --env-file cf.env safficodefresh/csdp-report-image:latest
-#
+
+
+
+- name: setup cf env
+      env:
+        VERBOSE: "1"
+        CF_API_KEY: "62245e6757660232167442d5.7ef491f9feac5d36a937836a53436303"
+        CF_IMAGE: "$YOUR_IMAGE"
+        ENRICHERS: "jira"
+        CF_HOST: "https://g.codefresh.io"
+      run: |
+        echo "VERBOSE=$VERBOSE" >> cf.env
+        echo "CF_API_KEY=$CF_API_KEY" >> cf.env
+        echo "CF_HOST=$CF_HOST" >> cf.env
+        echo "CF_IMAGE=$CF_IMAGE" >> cf.env
+        echo "ENRICHERS=$ENRICHERS" >> cf.env
+    - name: Report image
+      run: |
+        cat cf.env
+        docker run --env-file cf.env safficodefresh/csdp-report-image:latest
+
