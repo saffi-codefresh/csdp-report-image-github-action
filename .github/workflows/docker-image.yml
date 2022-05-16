@@ -37,5 +37,5 @@ jobs:
         CF_IMAGE: "$YOUR_IMAGE"
         ENRICHERS: "jira"
       run: |
-        docker run --env-file $GITHUB_ENV safficodefresh/csdp-report-image:latest
+        docker run --env-file "$GITHUB_ENV" safficodefresh/csdp-report-image:latest
 
