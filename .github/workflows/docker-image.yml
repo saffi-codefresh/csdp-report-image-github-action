@@ -40,6 +40,7 @@ jobs:
       run: |
         echo "VERBOSE=$VERBOSE" >> cf.env
         echo "CF_API_KEY=$CF_API_KEY" >> cf.env        
+        echo "CF_HOST=$CF_HOST" >> cf.env        
         echo "CF_IMAGE=$CF_IMAGE" >> cf.env        
         echo "ENRICHERS=$ENRICHERS" >> cf.env 
         echo "using env:"
