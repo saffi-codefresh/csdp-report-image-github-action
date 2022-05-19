@@ -49,8 +49,6 @@ jobs:
     - name: Report image
       run: |
         echo $GITHUB_ENV
-#        base64 -i $GITHUB_ENV > output
-#        cat output
         echo "ABC=DEF" > cf_env
         cat $GITHUB_ENV 
         cp $GITHUB_ENV cf_env
