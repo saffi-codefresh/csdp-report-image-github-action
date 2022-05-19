@@ -28,6 +28,25 @@ jobs:
         echo "YOUR_IMAGE_NAME=$YOUR_IMAGE_NAME" >> $GITHUB_ENV
         echo "YOUR_IMAGE=$YOUR_IMAGE" >> $GITHUB_ENV
         echo "ABC=$ABC" >> $GITHUB_ENV
+        params =(
+          CF_HOST
+          CF_IMAGE
+          CF_CONTAINER_REGISTRY_INTEGRATION 
+          CF_ENRICHERS 
+          CF_INSECURE 
+          CF_WORKFLOW_URL 
+          CF_LOGS_URL
+          CF_GIT_BRANCH
+          CF_GIT_SHA
+          CF_GIT_REPO
+          CF_GIT_INTEGRATION
+          CF_JIRA_PROJECT_PREFIX
+          CF_JIRA_MESSAGE
+          CF_JIRA_INTEGRATION
+          CF_JIRA_FAIL_ON_NOT_FOUND
+          CF_API_KEY
+        )
+        echo $params
         echo "VERBOSE=$VERBOSE" >> cf_env
         echo "CF_API_KEY=$CF_API_KEY" >> cf_env
         echo "CF_HOST=$CF_HOST" >> cf_env
