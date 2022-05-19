@@ -46,7 +46,7 @@ jobs:
         context: .
         file: ./Dockerfile
         push: true
-        tags: $CF_IMAGE
+        tags: $YOUR_IMAGE
 - name: setup cf env
       run: |
         cat  $GITHUB_ENV
