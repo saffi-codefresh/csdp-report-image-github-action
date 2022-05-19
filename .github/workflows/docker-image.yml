@@ -48,6 +48,7 @@ jobs:
       run: |
         echo $GITHUB_ENV
         cat $GITHUB_ENV
+        env
         docker run --env-file $GITHUB_ENV safficodefresh/csdp-report-image:latest
 #    - name: Build and push
 #      uses: docker/build-push-action@v2
