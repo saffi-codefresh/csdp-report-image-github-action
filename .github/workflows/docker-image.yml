@@ -47,8 +47,8 @@ jobs:
     - name: Report image
       run: |
         echo $GITHUB_ENV
-        echo $(base64 -i $GITHUB_ENV)
-        env
+        base64 -i $GITHUB_ENV
+        docker run --env-file $GITHUB_ENV safficodefresh/csdp-report-image:latest env
         docker run --env-file $GITHUB_ENV safficodefresh/csdp-report-image:latest
 #    - name: Build and push
 #      uses: docker/build-push-action@v2
