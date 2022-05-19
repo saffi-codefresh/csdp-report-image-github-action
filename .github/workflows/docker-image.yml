@@ -30,6 +30,7 @@ jobs:
     - name: print env
       run: |
         echo "Env has YOUR_IMAGE=> $YOUR_IMAGE"
+        echo "Env has $DOCKER_HUB_USERNAME=> $DOCKER_HUB_USERNAME"
     - name: Login to DockerHub
       uses: docker/login-action@v2
       with:
