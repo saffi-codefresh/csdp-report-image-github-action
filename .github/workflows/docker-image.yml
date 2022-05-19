@@ -18,6 +18,7 @@ jobs:
     - name: set env
       run: |
         echo "DOCKER_HUB_USERNAME=$DOCKER_HUB_USERNAME" >> $GITHUB_ENV
+        echo "HELLO=$HELLO" >> $GITHUB_ENV
         echo "YOUR_IMAGE_NAME=$YOUR_IMAGE_NAME" >> $GITHUB_ENV
         echo "YOUR_IMAGE=$YOUR_IMAGE" >> $GITHUB_ENV
 #        echo "cat $GITHUB_ENV"
@@ -27,6 +28,7 @@ jobs:
         DOCKER_HUB_USERNAME: ${{ secrets.DOCKER_HUB_USERNAME }}
         YOUR_IMAGE: ${{ secrets.DOCKER_HUB_USERNAME }}/csdp-report-image-github-action:demo
         YOUR_IMAGE_NAME: csdp-report-image-github-action
+        HELLO: ${{ HELLO }}
     - name: print env
       run: |
         echo "Env has YOUR_IMAGE=> $YOUR_IMAGE"
