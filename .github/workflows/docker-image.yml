@@ -47,7 +47,7 @@ jobs:
     - name: Build & push the Docker image
       run: |
         docker build --file Dockerfile --tag $CF_IMAGE
-        docker push $CF_IMAGE
+        echo docker push $CF_IMAGE
     - name: Report image
       run: |
 #        echo $GITHUB_ENV
