@@ -51,4 +51,4 @@ jobs:
         docker build . --file Dockerfile --tag $CF_IMAGE && docker push $CF_IMAGE
     - name: Report image
       run: |
-        docker run --env-file cf_env safficodefresh/csdp-report-image:latest
+        docker run --env-file=cf_env safficodefresh/csdp-report-image:latest
