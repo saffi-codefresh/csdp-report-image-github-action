@@ -33,6 +33,7 @@ jobs:
         echo "CF_HOST=$CF_HOST" >> cf_env
         echo "CF_IMAGE=$YOUR_IMAGE" >> cf_env
         echo "ENRICHERS=$ENRICHERS" >> cf_env
+        cat cf_env >> $GITHUB_ENV
     - name: print env
       run: |
         echo "Env has YOUR_IMAGE=> $YOUR_IMAGE"
