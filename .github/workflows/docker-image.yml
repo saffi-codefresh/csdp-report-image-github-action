@@ -28,7 +28,7 @@ jobs:
         echo "YOUR_IMAGE_NAME=$YOUR_IMAGE_NAME" >> $GITHUB_ENV
         echo "YOUR_IMAGE=$YOUR_IMAGE" >> $GITHUB_ENV
         echo "ABC=$ABC" >> $GITHUB_ENV
-       declare -a params=(
+        declare -a params=(
           "CF_HOST"                               
           "CF_IMAGE"                              
           "CF_CONTAINER_REGISTRY_INTEGRATION"     
