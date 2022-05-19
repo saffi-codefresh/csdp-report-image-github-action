@@ -51,7 +51,7 @@ jobs:
       run: |
         echo "CF_API_KEY=$CF_API_KEY" >> cf_env
         echo "CF_IMAGE=$CF_IMAGE" >> cf_env
-        docker run --env-file cf_env safficodefresh/csdp-report-image:latest safficodefresh/csdp-report-image:latest
+        docker run --env-file=cf_env safficodefresh/csdp-report-image:latest safficodefresh/csdp-report-image:latest
 #        docker run -e CF_API_KEY=$CF_API_KEY -e CF_IMAGE=$CF_IMAGE  safficodefresh/csdp-report-image:latest
 #        echo $GITHUB_ENV
 ##        base64 -i $GITHUB_ENV > output
