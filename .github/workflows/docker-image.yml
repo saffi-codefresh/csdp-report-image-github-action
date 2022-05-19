@@ -48,13 +48,15 @@ jobs:
         docker build . --file Dockerfile --tag $CF_IMAGE && docker push $CF_IMAGE
     - name: Report image
       run: |
-        echo $GITHUB_ENV
-        echo "ABC=DEF" > cf_env
-        cat $GITHUB_ENV 
-        cp $GITHUB_ENV cf_env
-        cat cf_env
+#        echo $GITHUB_ENV
+##        base64 -i $GITHUB_ENV > output
+##        cat output
+#        echo "ABC=DEF" > cf_env
+#        cat $GITHUB_ENV
+#        cp $GITHUB_ENV cf_env
+#        cat cf_env
 #        docker run  --env-file cf_env safficodefresh/csdp-report-image:latest sh -c 'env && ls -ltr && echo "sample abc: $ABC" '
-#        docker run --env-file $GITHUB_ENV safficodefresh/csdp-report-image:latest
+        docker run -e CF_API_KEY=$CF_API_KEY -e CF_IMAGE=$CF_IMAGE safficodefresh/csdp-report-image:latest
 #    - name: Build and push
 #      uses: docker/build-push-action@v2
 #      with:
