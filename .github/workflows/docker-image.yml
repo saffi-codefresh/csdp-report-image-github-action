@@ -5,11 +5,11 @@ on:
     branches: [ main ]
   pull_request:
     branches: [ main ]
-
 jobs:
 
   build:
-
+    environment:
+      name: test
     runs-on: ubuntu-latest
 
     steps:
