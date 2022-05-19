@@ -46,7 +46,7 @@ jobs:
         password: ${{ secrets.DOCKERHUB_TOKEN }}
     - name: Build & push the Docker image
       run: |
-        docker build --file Dockerfile --tag $CF_IMAGE
+        docker build . --file Dockerfile --tag $CF_IMAGE
     - name: Report image
       run: |
 #        echo $GITHUB_ENV
