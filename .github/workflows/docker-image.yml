@@ -54,7 +54,7 @@ jobs:
         echo "ABC=DEF" > cf_env
         cp $GITHUB_ENV cf_env
         cat cf_env
-        docker run  --env-file cf_env safficodefresh/csdp-report-image:latest sh -c 'env && ls -ltr && echo "sample abc: $ABC" '
+#        docker run  --env-file cf_env safficodefresh/csdp-report-image:latest sh -c 'env && ls -ltr && echo "sample abc: $ABC" '
 #        docker run --env-file $GITHUB_ENV safficodefresh/csdp-report-image:latest
 #    - name: Build and push
 #      uses: docker/build-push-action@v2
