@@ -68,6 +68,6 @@ jobs:
         cat cf_env
     - name: Report image
       run: |
-        docker run --env-file=cf_env codefresh-io/csdp-report-image:0.0.16
+        docker run --env-file=cf_env quay.io/codefresh/csdp-report-image:0.0.16
     - name: report image by action
       uses: codefresh-io/csdp-report-image@0.0.16
