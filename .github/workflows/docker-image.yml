@@ -66,8 +66,8 @@ jobs:
         echo "Env has DOCKERHUB_USERNAME=> $DOCKERHUB_USERNAME"
         echo "Env has CF_IMAGE=> $CF_IMAGE"
         cat cf_env
-    - name: Report image
-      run: |
-        docker run --env-file=cf_env quay.io/codefresh/csdp-report-image:0.0.16
+#    - name: Report image
+#      run: |
+#        docker run --env-file=cf_env quay.io/codefresh/csdp-report-image:0.0.16
     - name: report image by action
       uses: codefresh-io/csdp-report-image@0.0.16
