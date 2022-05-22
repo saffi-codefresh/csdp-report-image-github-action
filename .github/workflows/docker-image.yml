@@ -78,3 +78,4 @@ jobs:
         CF_API_KEY: ${{ secrets.CF_API_KEY }}
       uses: codefresh-io/csdp-report-image@0.0.18
 
+
