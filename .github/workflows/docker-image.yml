@@ -56,6 +56,17 @@ jobs:
         CF_VERBOSE: "1"
         CF_API_KEY: ${{ secrets.CF_API_KEY }}
       run: |
+        declare -a params=(
+          "CF_HOST"
+          "CF_IMAGE"
+          "CF_ENRICHERS"
+          "CF_API_KEY"
+          "CF_VERBOSE"
+        )
+        for val in ${params[@]}; do
+          echo "$val=${!val}"  >> cf_env
+        done
+        cat cf_env
         docker run --env-file=cf_env quay.io/codefresh/csdp-report-image:0.0.18
     - name: report image by action
       with:
