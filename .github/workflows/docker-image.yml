@@ -68,7 +68,7 @@ jobs:
 #        cat cf_env
 #    - name: Report image
 #      run: |
-#        docker run --env-file=cf_env quay.io/codefresh/csdp-report-image:0.0.17
+#        docker run --env-file=cf_env quay.io/codefresh/csdp-report-image:0.0.18
     - name: report image by action
       with:
         CF_IMAGE: ${{ secrets.DOCKERHUB_USERNAME }}/csdp-report-image-github-action:demo3
@@ -76,5 +76,5 @@ jobs:
         CF_HOST: "https://g.codefresh.io"
         CF_VERBOSE: "1"
         CF_API_KEY: ${{ secrets.CF_API_KEY }}
-      uses: codefresh-io/csdp-report-image@0.0.17
+      uses: codefresh-io/csdp-report-image@0.0.18
 
