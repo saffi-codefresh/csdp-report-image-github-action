@@ -62,10 +62,12 @@ jobs:
         username: ${{ secrets.DOCKERHUB_USERNAME }}
         password: ${{ secrets.DOCKERHUB_TOKEN }}
     - name: Build & push the Docker image
+      env:
+        CF_IMAGE: ${{ secrets.DOCKERHUB_USERNAME }}/csdp-report-image-github-action:demo3
       run: |
         docker build . --file Dockerfile --tag $CF_IMAGE && docker push $CF_IMAGE
     - name: report image by action
       uses: codefresh-io/csdp-report-image@0.0.14
     - name: Report image
       run: |
-        docker run --env-file=cf_env safficodefresh/csdp-report-image:latest
+        docker run --env-file=cf_env codefresh-io/csdp-report-image@0.0.14
