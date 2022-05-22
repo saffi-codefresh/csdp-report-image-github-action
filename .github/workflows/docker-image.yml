@@ -65,6 +65,8 @@ jobs:
       run: |
         cat cf_env
         docker build . --file Dockerfile --tag $CF_IMAGE && docker push $CF_IMAGE
+    - name: report image by action
+        - uses: codefresh-io/csdp-report-image@0.0.14
     - name: Report image
       run: |
         docker run --env-file=cf_env safficodefresh/csdp-report-image:latest
