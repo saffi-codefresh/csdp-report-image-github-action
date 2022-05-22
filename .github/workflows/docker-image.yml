@@ -58,6 +58,7 @@ jobs:
       run: |
         declare -a params=(
           "CF_HOST"
+          "CF_IMAGE"
           "CF_ENRICHERS"
           "CF_API_KEY"
           "CF_VERBOSE"
