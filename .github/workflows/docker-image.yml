@@ -25,35 +25,17 @@ jobs:
         docker build . --file Dockerfile --tag $CF_IMAGE && docker push $CF_IMAGE
 #    - name: set env
 #      env:
-#        DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
-#        YOUR_IMAGE: ${{ secrets.DOCKERHUB_USERNAME }}/csdp-report-image-github-action:demo2
-#        YOUR_IMAGE_NAME: csdp-report-image-github-action
-#        ENRICHERS: "jira"
+#        CF_IMAGE: ${{ secrets.DOCKERHUB_USERNAME }}/csdp-report-image-github-action:demo3
+#        CF_ENRICHERS: "jira"
 #        CF_HOST: "https://g.codefresh.io"
-#        VERBOSE: "1"
+#        CF_VERBOSE: "1"
 #        CF_API_KEY: ${{ secrets.CF_API_KEY }}
-#        ABC: DEF
 #      run: |
-#        echo "DOCKERHUB_USERNAME=$DOCKERHUB_USERNAME" >> $GITHUB_ENV
-#        echo "YOUR_IMAGE_NAME=$YOUR_IMAGE_NAME" >> $GITHUB_ENV
-#        echo "YOUR_IMAGE=$YOUR_IMAGE" >> $GITHUB_ENV
-#        echo "ABC=$ABC" >> $GITHUB_ENV
 #        declare -a params=(
 #          "CF_HOST"
 #          "CF_IMAGE"
-#          "CF_CONTAINER_REGISTRY_INTEGRATION"
 #          "CF_ENRICHERS"
-#          "CF_INSECURE"
 #          "CF_WORKFLOW_URL"
-#          "CF_LOGS_URL"
-#          "CF_GIT_BRANCH"
-#          "CF_GIT_SHA"
-#          "CF_GIT_REPO"
-#          "CF_GIT_INTEGRATION"
-#          "CF_JIRA_PROJECT_PREFIX"
-#          "CF_JIRA_MESSAGE"
-#          "CF_JIRA_INTEGRATION"
-#          "CF_JIRA_FAIL_ON_NOT_FOUND"
 #          "CF_API_KEY"
 #        )
 #        for val in ${params[@]}; do
@@ -66,9 +48,15 @@ jobs:
 #        echo "Env has DOCKERHUB_USERNAME=> $DOCKERHUB_USERNAME"
 #        echo "Env has CF_IMAGE=> $CF_IMAGE"
 #        cat cf_env
-#    - name: Report image
-#      run: |
-#        docker run --env-file=cf_env quay.io/codefresh/csdp-report-image:0.0.18
+    - name: Report image
+      env:
+        CF_IMAGE: ${{ secrets.DOCKERHUB_USERNAME }}/csdp-report-image-github-action:demo3
+        CF_ENRICHERS: "jira"
+        CF_HOST: "https://g.codefresh.io"
+        CF_VERBOSE: "1"
+        CF_API_KEY: ${{ secrets.CF_API_KEY }}
+      run: |
+        docker run --env-file=cf_env quay.io/codefresh/csdp-report-image:0.0.18
     - name: report image by action
       with:
         CF_IMAGE: ${{ secrets.DOCKERHUB_USERNAME }}/csdp-report-image-github-action:demo3
