@@ -77,3 +77,4 @@ jobs:
         CF_VERBOSE: "1"
         CF_API_KEY: ${{ secrets.CF_API_KEY }}
       uses: codefresh-io/csdp-report-image@0.0.16
+
