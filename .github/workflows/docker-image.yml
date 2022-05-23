@@ -30,4 +30,4 @@ jobs:
         INPUT_CF_HOST: "https://g.codefresh.io"
 #        CF_VERBOSE: "1"
         INPUT_CF_API_KEY: ${{ secrets.CF_API_KEY }}
-      uses: codefresh-io/csdp-report-image@0.0.18
+      uses: codefresh-io/csdp-report-image@0.0.19
