@@ -23,56 +23,11 @@ jobs:
         CF_IMAGE: ${{ secrets.DOCKERHUB_USERNAME }}/csdp-report-image-github-action:demo3
       run: |
         docker build . --file Dockerfile --tag $CF_IMAGE && docker push $CF_IMAGE
-#    - name: set env
-#      env:
-#        CF_IMAGE: ${{ secrets.DOCKERHUB_USERNAME }}/csdp-report-image-github-action:demo3
-#        CF_ENRICHERS: "jira"
-#        CF_HOST: "https://g.codefresh.io"
-#        CF_VERBOSE: "1"
-#        CF_API_KEY: ${{ secrets.CF_API_KEY }}
-#      run: |
-#        declare -a params=(
-#          "CF_HOST"
-#          "CF_IMAGE"
-#          "CF_ENRICHERS"
-#          "CF_WORKFLOW_URL"
-#          "CF_API_KEY"
-#        )
-#        for val in ${params[@]}; do
-#          echo "$val=${!val}"  >> cf_env
-#        done
-#        cat cf_env >> $GITHUB_ENV
-#    - name: print env
-#      run: |
-#        echo "Env has YOUR_IMAGE=> $YOUR_IMAGE"
-#        echo "Env has DOCKERHUB_USERNAME=> $DOCKERHUB_USERNAME"
-#        echo "Env has CF_IMAGE=> $CF_IMAGE"
-#        cat cf_env
-    - name: Report image
-      env:
-        CF_IMAGE: ${{ secrets.DOCKERHUB_USERNAME }}/csdp-report-image-github-action:demo3
-        CF_ENRICHERS: "jira"
-        CF_HOST: "https://g.codefresh.io"
-        CF_VERBOSE: "1"
-        CF_API_KEY: ${{ secrets.CF_API_KEY }}
-      run: |
-        declare -a params=(
-          "CF_HOST"
-          "CF_IMAGE"
-          "CF_ENRICHERS"
-          "CF_API_KEY"
-          "CF_VERBOSE"
-        )
-        for val in ${params[@]}; do
-          echo "$val=${!val}"  >> cf_env
-        done
-        cat cf_env
-        docker run --env-file=cf_env quay.io/codefresh/csdp-report-image:0.0.18
     - name: report image by action
       with:
         CF_IMAGE: ${{ secrets.DOCKERHUB_USERNAME }}/csdp-report-image-github-action:demo3
-        CF_ENRICHERS: "jira"
+#        CF_ENRICHERS: "jira"
         CF_HOST: "https://g.codefresh.io"
-        CF_VERBOSE: "1"
+#        CF_VERBOSE: "1"
         CF_API_KEY: ${{ secrets.CF_API_KEY }}
       uses: codefresh-io/csdp-report-image@0.0.18
