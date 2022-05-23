@@ -25,9 +25,9 @@ jobs:
         docker build . --file Dockerfile --tag $CF_IMAGE && docker push $CF_IMAGE
     - name: report image by action
       with:
-        INPUT_CF_IMAGE: ${{ secrets.DOCKERHUB_USERNAME }}/csdp-report-image-github-action:demo3
+        CF_IMAGE: ${{ secrets.DOCKERHUB_USERNAME }}/csdp-report-image-github-action:demo3
 #        CF_ENRICHERS: "jira"
-        INPUT_CF_HOST: "https://g.codefresh.io"
+        CF_HOST: "https://g.codefresh.io"
 #        CF_VERBOSE: "1"
-        INPUT_CF_API_KEY: ${{ secrets.CF_API_KEY }}
+        CF_API_KEY: ${{ secrets.CF_API_KEY }}
       uses: codefresh-io/csdp-report-image@0.0.19
