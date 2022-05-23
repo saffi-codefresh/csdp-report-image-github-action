@@ -23,7 +23,7 @@ jobs:
         CF_IMAGE: ${{ secrets.DOCKERHUB_USERNAME }}/csdp-report-image-github-action:demo3
       run: |
         docker build . --file Dockerfile --tag $CF_IMAGE && docker push $CF_IMAGE
-    - name: Report image
+    - name: "Example Report image directly by running:  docker run --env-file=cf_env quay.io/codefresh/csdp-report-image"
       env:
         CF_IMAGE: ${{ secrets.DOCKERHUB_USERNAME }}/csdp-report-image-github-action:demo1
 #        CF_ENRICHERS: "jira"
