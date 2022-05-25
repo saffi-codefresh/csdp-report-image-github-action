@@ -11,6 +11,9 @@ jobs:
       name: test
     runs-on: ubuntu-latest
     steps:
+    - name: about
+      run: |
+        echo "$(env)"
     - name: Checkout
       uses: actions/checkout@v3
     - name: Login to DockerHub
@@ -31,7 +34,6 @@ jobs:
         CF_VERBOSE: "1"
         CF_API_KEY: ${{ secrets.CF_API_KEY }}
       run: |
-        env
         declare -a params=(
           "CF_HOST"
           "CF_IMAGE"
