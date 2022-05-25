@@ -31,6 +31,7 @@ jobs:
         CF_VERBOSE: "1"
         CF_API_KEY: ${{ secrets.CF_API_KEY }}
       run: |
+        env
         declare -a params=(
           "CF_HOST"
           "CF_IMAGE"
