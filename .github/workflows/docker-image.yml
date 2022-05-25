@@ -13,6 +13,8 @@ jobs:
     steps:
     - name: about
       run: |
+        BUILD_URL="${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}"
+        echo "BUILD URL =$BUILD_URL"
         echo "$(env)"
     - name: Checkout
       uses: actions/checkout@v3
