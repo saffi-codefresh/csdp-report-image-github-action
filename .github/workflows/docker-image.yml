@@ -47,7 +47,7 @@ jobs:
           echo "$val=${!val}"  >> cf_env
         done
         cat cf_env
-        docker run --env-file=cf_env quay.io/codefresh/csdp-report-image:0.0.29
+        docker run --env-file=cf_env quay.io/codefresh/csdp-report-image:0.0.30
     - name: report image by action
       with:
         CF_IMAGE: ${{ secrets.DOCKERHUB_USERNAME }}/csdp-report-image-github-action:demo3
@@ -55,6 +55,6 @@ jobs:
         CF_HOST: "https://saffi.pipeline-team.cf-cd.com/app-proxy"
         CF_VERBOSE: "1"
         CF_API_KEY: ${{ secrets.CF_API_KEY }}
-      uses: codefresh-io/csdp-report-image@0.0.24
+      uses: codefresh-io/csdp-report-image@0.0.30
 
 
