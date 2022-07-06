@@ -55,6 +55,6 @@ jobs:
         CF_HOST: "https://saffi.pipeline-team.cf-cd.com/app-proxy"
         CF_VERBOSE: "1"
         CF_API_KEY: ${{ secrets.CF_API_KEY }}
-      uses: codefresh-io/csdp-report-image@0.0.30
+      uses: codefresh-io/codefresh-report-image@0.0.62-test
 
 
